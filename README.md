@@ -13,4 +13,7 @@
 *mysql>=5.7
 *eclipse
 
+登录账号：ok
+密码：appregin
+
 
