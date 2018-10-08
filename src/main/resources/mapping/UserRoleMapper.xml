@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readin.robot.dao.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.readin.robot.mapping.UserRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sys_user_id" jdbcType="BIGINT" property="sysUserId" />
+    <result column="sys_role_id" jdbcType="BIGINT" property="sysRoleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sys_user_id, sys_role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.readin.robot.mapping.UserRole">
+    insert into user_role (id, sys_user_id, sys_role_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{sysUserId,jdbcType=BIGINT}, #{sysRoleId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.readin.robot.mapping.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sysUserId != null">
+        sys_user_id,
+      </if>
+      <if test="sysRoleId != null">
+        sys_role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sysUserId != null">
+        #{sysUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sysRoleId != null">
+        #{sysRoleId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.readin.robot.mapping.UserRole">
+    update user_role
+    <set>
+      <if test="sysUserId != null">
+        sys_user_id = #{sysUserId,jdbcType=BIGINT},
+      </if>
+      <if test="sysRoleId != null">
+        sys_role_id = #{sysRoleId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.readin.robot.mapping.UserRole">
+    update user_role
+    set sys_user_id = #{sysUserId,jdbcType=BIGINT},
+      sys_role_id = #{sysRoleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
