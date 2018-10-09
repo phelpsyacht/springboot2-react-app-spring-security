@@ -4,6 +4,7 @@
 
 <p>运行登录与注册功能的 RN app的服务端</p>
 
+<p>代码在Ubuntu16.04 Android Studio下运行成功</p>
 <p>集成了springboot2，spring-security，jwt</p>
 
 
